@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Webpage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="/styles/HC_other.css">
+</head>
+<body>
+    <div class="container">
+      <header id="header">
+        <img src="./images/Sparkleclean.png" alt="Sparkleclean" width="25%">    
+        <div id="menu">
+          <form action="/" method="get"><button>Home</button></form>
+          <form action="/services" method="get"><button type="submit">Services</button></form>
+          <form action="/gallery" method="get"><button type="submit">Gallery</button></form>
+          <form action="/about" method="get"><button type="submit">About Us</button></form>
+          <form action="/contact" method="get"><button type="submit">Contact</button></form>
+          <form action="/book" method="get"><button type="submit">Book</button></form>
+        </div>  
+      </header>
+      <section class="body-section">
+        <form id="contactForm" action="/submit-form" method="post">
+          <div class="name-row">
+            <div class="name-group">
+              <label for="fname">First name:</label>
+              <input type="text" id="fname" name="fname">
+            </div>
+            <br>
+            <div class="name-group">
+              <label for="lname">Last name:</label>
+              <input type="text" id="lname" name="lname">
+            </div>
+          </div>
+          <br>
+          <label for="uEmail">Email: </label><br>
+          <input type="email" id="uEmail" name="uEmail">
+          <br>
+          <label for="message">Message: </label><br>
+          <textarea id="message" name="message" rows="4" cols="50" placeholder="Your message here..."></textarea>
+          <br>
+          <input type="submit" value="Submit">
+        </form>
+        <div id="formMessage" style="display: none;">
+          Thank you, we will get back to you soon!
+        </div>
+      </section>
+      <footer>
+        <div>
+          <a href="#header"><img src="./images/Sparkleclean.png" alt="logo" width="10%"></a>
+        </div>
+      </footer>
+  </div>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevents the default form submission
+  
+      const formData = new FormData(this);
+  
+      fetch('/submit-form', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('contactForm').style.display = 'none'; // Hide the form
+        document.getElementById('formMessage').style.display = 'block'; // Show the thank-you message
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    });
+  </script>
+</body>
+</html>

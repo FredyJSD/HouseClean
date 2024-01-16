@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Webpage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="/styles/HC_other.css">
+</head>
+<body>
+    <div class="container">
+      <header id="header">
+        <img src="./images/Sparkleclean.png" alt="Sparkleclean" width="25%">    
+        <div id="menu">
+          <form action="/" method="get"><button>Home</button></form>
+          <form action="/services" method="get"><button type="submit">Services</button></form>
+          <form action="/gallery" method="get"><button type="submit">Gallery</button></form>
+          <form action="/about" method="get"><button type="submit">About Us</button></form>
+          <form action="/contact" method="get"><button type="submit">Contact</button></form>
+          <form action="/book" method="get"><button type="submit">Book</button></form>
+        </div>  
+      </header>
+
+      <section class="body-section">
+      <div class="carousel-container">
+        <div class="carousel-slide">
+          <img src="./images/house1.png" alt="Cleaning 1">
+          <img src="./images/house2.png" alt="Cleaning 2">
+          <img src="./images/house3.png" alt="Cleaning 3">
+          <img src="./images/house4.png" alt="Cleaning 4">
+        </div>
+        <button id = "prevBtn">Previous</button>
+        <button id = "nextBtn">Next</button>
+      </div>
+      </section>
+
+      <footer>
+        <div>
+          <a href="#header"><img src="./images/Sparkleclean.png" alt="logo" width="10%"></a>
+        </div>
+      </footer>
+  </div>
+  <script>
+    let slideIndex = 0;
+    const slides = document.querySelectorAll(".carousel-slide img");
+    const totalSlides = slides.length;
+
+    document.getElementById("prevBtn").addEventListener("click", () => {
+      moveSlide(-1);
+    });
+
+    document.getElementById("nextBtn").addEventListener("click", () => {
+      moveSlide(1);
+    });
+
+    function moveSlide(step) {
+      slideIndex = (slideIndex + step + totalSlides) % totalSlides;
+      const slideWidth = slides[0].clientWidth;
+      document.querySelector(".carousel-slide").style.transform = 
+        `translateX(${-slideIndex * slideWidth}px)`;
+    }
+
+  </script>
+</body>
+</html>
