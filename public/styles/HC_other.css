@@ -12,6 +12,7 @@ body{
     margin-left: 20px;
     margin-right: 20px;
     cursor: pointer;
+    color: black;
 }
 
 #menu button:hover{
