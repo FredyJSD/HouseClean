@@ -21,6 +21,7 @@ body{
 
 #menu{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     background-color: white;
     padding-top: 20px;
@@ -29,15 +30,15 @@ body{
 }
 
 .body-section {
-    background-color:rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
     width: 80%;
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* two columns */
-    grid-template-rows: 1fr 1fr; /* two rows */
-    height: 100vh; /* full viewport height */
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
     margin: 2rem auto;
-    padding: 20px 100px;
+    padding: 2rem 2rem;
     border-radius: 10px;
+    justify-content: center;
 }
 
 .top-left, .top-right, .bottom-left, .bottom-right {
